@@ -55,9 +55,10 @@ main {
 
 .sobre {
   margin-bottom: 3rem;
-  text-align: center;
+  text-align: left;
   background: #000;
   color: #fff;
+  padding: 2rem 1rem;
 }
 
 .sobre p {
