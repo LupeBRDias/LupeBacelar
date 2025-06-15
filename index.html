@@ -1,150 +1,79 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfólio - Designer Gráfica</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lupe | Designer Gráfica</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <header>
-    <h1>Lupe Bacelar</h1>
-    <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
-    <nav id="menu">
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre</a>
+    <div class="logo">Lupe</div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+    <nav id="nav">
+      <a href="#sobre">Sobre mim</a>
+      <a href="#portfolio">Portfólio</a>
       <a href="#contato">Contato</a>
     </nav>
   </header>
 
-  <section class="container" id="inicio">
-    <h1>Sinta-se a vontade...</h1>
-    <p>Sou uma designer gráfica especializada em identidade visual, branding e comunicação criativa.</p>
-
-    <h2>Trabalhos Recentes</h2>
-    <div class="portfolio-grid">
-
-      <!-- Projeto 1 -->
-      <div class="Prancheta 8.png" onclick="openModal(1)">
-        <img src="Prancheta 8.png" alt="Projeto 1">
-        <h3>Projeto 1</h3>
-      </div>
-
-      <!-- Projeto 2 -->
-      <div class="portfolio-item" onclick="openModal(2)">
-        <img src="https://via.placeholder.com/300x200" alt="Projeto 2">
-        <h3>Projeto 2</h3>
-      </div>
-
-      <!-- Projeto 3 -->
-      <div class="portfolio-item" onclick="openModal(3)">
-        <img src="https://via.placeholder.com/300x200" alt="Projeto 3">
-        <h3>Projeto 3</h3>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <div class="modal-content" id="modal-content"></div>
-      <div class="modal-controls">
-        <button onclick="prevImage()">◀</button>
-        <button onclick="nextImage()">▶</button>
-      </div>
-    </div>
-      <div class="portfolio-item">
-        <img src="Prancheta 9.png" alt="Projeto 1">
-        <img src="Prancheta 10.png" alt="Projeto 1">
-        <img src="Prancheta 11.png" alt="Projeto 1">
-        <img src="Prancheta 12.png" alt="Projeto 1">
-        <img src="Prancheta 13.png" alt="Projeto 1">
-        <img src="Prancheta 14.png" alt="Projeto 1">
-        <h3>Projeto 1</h3>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://via.placeholder.com/300x200" alt="Projeto 2">
-        <h3>Projeto 2</h3>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://via.placeholder.com/300x200" alt="Projeto 3">
-        <h3>Projeto 3</h3>
-      </div>
-    </div>
-  </section>
-
- <section class="container" id="sobre">
-  <div class="sobre-flex">
-    <div>
+  <main>
+    <section id="sobre" class="sobre">
+      <img src="Funesta - Lucy.png" alt="Foto de Lupe" class="foto-perfil" />
       <h2>Sobre mim</h2>
       <p>Sou uma designer gráfica com paixão por formas, contraste e comunicação visual. Acredito que o design é uma forma de expressão e conexão.</p>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+      <h2>Portfólio</h2>
+      <div class="grid">
+        <div class="projeto" onclick="openModal(1)">
+          <img src="projeto1-thumb.jpg" alt="Projeto 1" />
+          <p>Projeto 1</p>
+        </div>
+        <div class="projeto" onclick="openModal(2)">
+          <img src="projeto2-thumb.jpg" alt="Projeto 2" />
+          <p>Projeto 2</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contato">
+      <h2>Contato</h2>
+      <p>Email: lupebacelar@gmail.com</p>
+      <p>Instagram: @lupe.design</p>
+    </section>
+  </main>
+
+  <!-- Modais -->
+  <div class="modal" id="modal1" onclick="closeModal(1)">
+    <div class="modal-content">
+      <img src="projeto1-img1.jpg" alt="Projeto 1 imagem 1" />
+      <img src="projeto1-img2.jpg" alt="Projeto 1 imagem 2" />
     </div>
-  <img src="Funesta - Lucy.png" alt="Foto da Designer" class="foto-perfil">
   </div>
-</section>
 
-  <section class="container" id="contato">
-    <h2>Contato</h2>
-    <form>
-      <p><label>Nome<br><input type="text" name="nome" required></label></p>
-      <p><label>Email<br><input type="email" name="email" required></label></p>
-      <p><label>Mensagem<br><textarea name="mensagem" rows="5" required></textarea></label></p>
-      <p><button type="submit">Enviar</button></p>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 - Lupe Bacelar</p>
-  </footer>
+  <div class="modal" id="modal2" onclick="closeModal(2)">
+    <div class="modal-content">
+      <img src="projeto2-img1.jpg" alt="Projeto 2 imagem 1" />
+      <img src="projeto2-img2.jpg" alt="Projeto 2 imagem 2" />
+    </div>
+  </div>
 
   <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('menu');
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('ativo');
     });
-  
-    const modal = document.getElementById("modal");
-    const modalContent = document.getElementById("modal-content");
 
-    const images = {
-      1: ["https://via.placeholder.com/800x500?text=Projeto+1+-+1", "https://via.placeholder.com/800x500?text=Projeto+1+-+2"],
-      2: ["https://via.placeholder.com/800x500?text=Projeto+2+-+1", "https://via.placeholder.com/800x500?text=Projeto+2+-+2"],
-      3: ["https://via.placeholder.com/800x500?text=Projeto+3+-+1", "https://via.placeholder.com/800x500?text=Projeto+3+-+2"]
-    };
-
-    let currentImages = [];
-    let currentIndex = 0;
-
-    function openModal(projectId) {
-      currentImages = images[projectId];
-      currentIndex = 0;
-      showImage();
-      modal.style.display = "block";
+    function openModal(id) {
+      document.getElementById(`modal${id}`).style.display = 'flex';
     }
 
-    function closeModal() {
-      modal.style.display = "none";
+    function closeModal(id) {
+      document.getElementById(`modal${id}`).style.display = 'none';
     }
-
-    function showImage() {
-      modalContent.innerHTML = "<img src='" + currentImages[currentIndex] + "' style='width: 100%; max-height: 80vh;'>";
-    }
-
-    function prevImage() {
-      if (currentImages.length > 0) {
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        showImage();
-      }
-    }
-
-    function nextImage() {
-      if (currentImages.length > 0) {
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        showImage();
-      }
-    }
-</script>
-
+  </script>
 </body>
 </html>
