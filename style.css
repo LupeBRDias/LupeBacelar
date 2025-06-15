@@ -53,7 +53,19 @@ main {
   padding: 0 2rem;
 }
 
-.sobre, .portfolio, .contato {
+.sobre {
+  margin-bottom: 3rem;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+.sobre p {
+  margin-bottom: 1.5rem;
+}
+
+.portfolio, .contato {
   margin-bottom: 3rem;
   text-align: center;
 }
