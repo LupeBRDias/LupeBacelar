@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfólio - Designer Gráfica</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Nome da Designer</h1>
+    <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+    <nav id="menu">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="container" id="inicio">
+    <h1>Bem-vinda ao meu portfólio</h1>
+    <p>Sou uma designer gráfica especializada em identidade visual, branding e comunicação criativa.</p>
+
+    <h2>Trabalhos Recentes</h2>
+    <div class="portfolio-grid">
+
+      <!-- Projeto 1 -->
+      <div class="portfolio-item" onclick="openModal(1)">
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 1">
+        <h3>Projeto 1</h3>
+      </div>
+
+      <!-- Projeto 2 -->
+      <div class="portfolio-item" onclick="openModal(2)">
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 2">
+        <h3>Projeto 2</h3>
+      </div>
+
+      <!-- Projeto 3 -->
+      <div class="portfolio-item" onclick="openModal(3)">
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 3">
+        <h3>Projeto 3</h3>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-content" id="modal-content"></div>
+      <div class="modal-controls">
+        <button onclick="prevImage()">◀</button>
+        <button onclick="nextImage()">▶</button>
+      </div>
+    </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 1">
+        <h3>Projeto 1</h3>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 2">
+        <h3>Projeto 2</h3>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 3">
+        <h3>Projeto 3</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="sobre">
+    <h2>Sobre mim</h2>
+    <p>Sou uma designer gráfica com paixão por formas, contraste e comunicação visual. Acredito que o design é uma forma de expressão e conexão.</p>
+  </section>
+
+  <section class="container" id="contato">
+    <h2>Contato</h2>
+    <form>
+      <p><label>Nome<br><input type="text" name="nome" required></label></p>
+      <p><label>Email<br><input type="email" name="email" required></label></p>
+      <p><label>Mensagem<br><textarea name="mensagem" rows="5" required></textarea></label></p>
+      <p><button type="submit">Enviar</button></p>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 - Nome da Designer</p>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modal-content");
+
+    const images = {
+      1: ["https://via.placeholder.com/800x500?text=Projeto+1+-+1", "https://via.placeholder.com/800x500?text=Projeto+1+-+2"],
+      2: ["https://via.placeholder.com/800x500?text=Projeto+2+-+1", "https://via.placeholder.com/800x500?text=Projeto+2+-+2"],
+      3: ["https://via.placeholder.com/800x500?text=Projeto+3+-+1", "https://via.placeholder.com/800x500?text=Projeto+3+-+2"]
+    };
+
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function openModal(projectId) {
+      currentImages = images[projectId];
+      currentIndex = 0;
+      showImage();
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function showImage() {
+      modalContent.innerHTML = "<img src='" + currentImages[currentIndex] + "' style='width: 100%; max-height: 80vh;'>";
+    }
+
+    function prevImage() {
+      if (currentImages.length > 0) {
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        showImage();
+      }
+    }
+
+    function nextImage() {
+      if (currentImages.length > 0) {
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        showImage();
+      }
+    }
+</script>
+
+</body>
+</html>
