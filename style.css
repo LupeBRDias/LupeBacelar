@@ -44,7 +44,13 @@ nav a {
 }
 
 main {
-  padding: 2rem;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .sobre, .portfolio, .contato {
@@ -57,7 +63,8 @@ main {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1rem;
+  display: block;
+  margin: 0 auto 1.5rem auto;
 }
 
 .grid {
@@ -131,10 +138,5 @@ main {
   .grid {
     flex-direction: column;
     align-items: center;
-  }
-
-  .foto-perfil {
-    margin-left: auto;
-    margin-right: auto;
   }
 }
