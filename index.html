@@ -1,77 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfólio Designer Gráfica - Lupe</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfólio - Designer Gráfica</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header>
-    <div class="container">
-      <h1>Lupe - Designer Gráfica</h1>
-      <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#sobre">Sobre mim</a></li>
-          <li><a href="#portfolio">Portfólio</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1>Nome da Designer</h1>
+    <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+    <nav id="menu">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
   </header>
 
-  <section class="container" id="sobre">
-    <div class="sobre-flex">
-      <img src="Funesta - Lucy.png" alt="Foto da Designer" class="foto-perfil" />
-      <div>
-        <h2>Sobre mim</h2>
-        <p>Sou uma designer gráfica com paixão por formas, contraste e comunicação visual. Acredito que o design é uma forma de expressão e conexão.</p>
-      </div>
-    </div>
-  </section>
+  <section class="container" id="inicio">
+    <h1>Bem-vinda ao meu portfólio</h1>
+    <p>Sou uma designer gráfica especializada em identidade visual, branding e comunicação criativa.</p>
 
-  <section class="container" id="portfolio">
-    <h2>Portfólio</h2>
+    <h2>Trabalhos Recentes</h2>
     <div class="portfolio-grid">
+
+      <!-- Projeto 1 -->
       <div class="portfolio-item" onclick="openModal(1)">
-        <img src="https://via.placeholder.com/300x200" alt="Projeto 1" />
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 1">
         <h3>Projeto 1</h3>
       </div>
+
+      <!-- Projeto 2 -->
       <div class="portfolio-item" onclick="openModal(2)">
-        <img src="https://via.placeholder.com/300x200" alt="Projeto 2" />
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 2">
         <h3>Projeto 2</h3>
       </div>
+
+      <!-- Projeto 3 -->
       <div class="portfolio-item" onclick="openModal(3)">
-        <img src="https://via.placeholder.com/300x200" alt="Projeto 3" />
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 3">
+        <h3>Projeto 3</h3>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-content" id="modal-content"></div>
+      <div class="modal-controls">
+        <button onclick="prevImage()">◀</button>
+        <button onclick="nextImage()">▶</button>
+      </div>
+    </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 1">
+        <h3>Projeto 1</h3>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 2">
+        <h3>Projeto 2</h3>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200" alt="Projeto 3">
         <h3>Projeto 3</h3>
       </div>
     </div>
   </section>
 
-  <section class="container" id="contato">
-    <h2>Contato</h2>
-    <p>Email: lupe@email.com</p>
+  <section class="container" id="sobre">
+    <h2>Sobre mim</h2>
+    <p>Sou uma designer gráfica com paixão por formas, contraste e comunicação visual. Acredito que o design é uma forma de expressão e conexão.</p>
   </section>
 
-  <!-- Modal -->
-  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-    <button class="close" aria-label="Fechar modal" onclick="closeModal()">&times;</button>
-    <div class="modal-content" id="modal-content"></div>
-    <div class="modal-controls">
-      <button onclick="prevImage()" aria-label="Imagem anterior">◀</button>
-      <button onclick="nextImage()" aria-label="Próxima imagem">▶</button>
-    </div>
-  </div>
+  <section class="container" id="contato">
+    <h2>Contato</h2>
+    <form>
+      <p><label>Nome<br><input type="text" name="nome" required></label></p>
+      <p><label>Email<br><input type="email" name="email" required></label></p>
+      <p><label>Mensagem<br><textarea name="mensagem" rows="5" required></textarea></label></p>
+      <p><button type="submit">Enviar</button></p>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 - Nome da Designer</p>
+  </footer>
 
   <script>
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
     });
-
+  
     const modal = document.getElementById("modal");
     const modalContent = document.getElementById("modal-content");
 
@@ -96,7 +118,7 @@
     }
 
     function showImage() {
-      modalContent.innerHTML = `<img src="${currentImages[currentIndex]}" style="width: 100%; max-height: 80vh;" alt="Imagem do projeto" />`;
+      modalContent.innerHTML = "<img src='" + currentImages[currentIndex] + "' style='width: 100%; max-height: 80vh;'>";
     }
 
     function prevImage() {
@@ -112,6 +134,7 @@
         showImage();
       }
     }
-  </script>
+</script>
+
 </body>
 </html>
