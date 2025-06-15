@@ -49,7 +49,7 @@ main {
 
 .sobre, .portfolio, .contato {
   margin-bottom: 3rem;
-  text-align: left;
+  text-align: center;
 }
 
 .foto-perfil {
